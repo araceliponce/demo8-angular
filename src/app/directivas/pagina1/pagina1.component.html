@@ -1,0 +1,25 @@
+<form (ngSubmit)="validacion(usuarioInput.value,+contrasenaInput.value)" class="p-3">
+  <label class="d-block mb-3">USUARIO: <input class="form-control" type="text" #usuarioInput> </label>
+
+  <label class="d-block mb-3"> CONTRASEÑA: <input class="form-control" type="number" #contrasenaInput>
+  </label>
+
+  <input class="form-control" type="submit" value="enviar datos">
+</form>
+
+
+<section *ngIf="validacion(usuarioInput.value,+contrasenaInput.value)==true ; else datosIncorrectos">
+
+  <p>Bienvenido usuario {{datos.nombre}}</p>
+
+  <ul>
+    <li *ngFor="let enlace of enlaces">
+      <a href="#"> {{enlace}} </a>
+    </li>
+  </ul>
+</section>
+
+
+<ng-template #datosIncorrectos>
+  <p>Usuario incorrecto</p>
+</ng-template>
