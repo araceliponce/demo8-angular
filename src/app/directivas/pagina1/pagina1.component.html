@@ -1,25 +1,27 @@
-<form (ngSubmit)="validacion(usuarioInput.value,+contrasenaInput.value)" class="p-3">
-  <label class="d-block mb-3">USUARIO: <input class="form-control" type="text" #usuarioInput> </label>
+<section class="bg-light m-3 border">
+  <form (ngSubmit)="validacion(usuarioInput.value,+contrasenaInput.value)" class="p-3">
+    <label class="d-block mb-3">USUARIO: <input class="form-control" type="text" #usuarioInput> </label>
 
-  <label class="d-block mb-3"> CONTRASEÑA: <input class="form-control" type="number" #contrasenaInput>
-  </label>
+    <label class="d-block mb-3"> CONTRASEÑA: <input class="form-control" type="number" #contrasenaInput>
+    </label>
 
-  <input class="form-control" type="submit" value="enviar datos">
-</form>
+    <input class="form-control btn border border-success" type="submit" value="ENVIAR DATOS">
+  </form>
 
 
-<section *ngIf="validacion(usuarioInput.value,+contrasenaInput.value)==true ; else datosIncorrectos">
+  <section *ngIf="validacion(usuarioInput.value,+contrasenaInput.value)==true ; else datosIncorrectos">
 
-  <p>Bienvenido usuario {{datos.nombre}}</p>
+    <p class="p-3 fw-bold fs-3">Bienvenido usuario: {{datos.nombre}}</p>
 
-  <ul>
-    <li *ngFor="let enlace of enlaces">
-      <a href="#"> {{enlace}} </a>
-    </li>
-  </ul>
+    <ul>
+      <li *ngFor="let enlace of enlaces">
+        <a href="#"> {{enlace}} </a>
+      </li>
+    </ul>
+  </section>
+
+
+  <ng-template #datosIncorrectos>
+    <p class="bg-danger p-3 text-white text-center fw-bold">Usuario incorrecto</p>
+  </ng-template>
 </section>
-
-
-<ng-template #datosIncorrectos>
-  <p>Usuario incorrecto</p>
-</ng-template>
